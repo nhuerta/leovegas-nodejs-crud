@@ -22,18 +22,24 @@ This is a RESTful API built using Node.js and MySQL, following the JSON:API spec
 
 ```
 leovegas-nodejs-crud/
+.
+├── NodeJS API test.pdf
 ├── README.md
+├── curl.txt
+├── package-lock.json
 ├── package.json
 ├── public
-│   └── users.html
+│   └── users.html
 ├── src
-│   ├── app.js
-│   ├── middleware
-│   │   └── auth.js
-│   ├── models
-│   │   └── user.js
-│   └── routes
-│       └── users.js
+│   ├── app.js
+│   ├── db.js
+│   ├── logger.js
+│   ├── middleware
+│   │   └── auth.js
+│   ├── models
+│   │   └── user.js
+│   └── routes
+│       └── users.js
 └── test
     ├── helper.js
     └── user_test.js
