@@ -1,0 +1,30 @@
+{
+  "name": "leovegas-nodejs-crud",
+  "version": "1.0.0",
+  "description": "LeoVegas NodeJS Developer API test",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "mocha --exit"
+  },
+  "author": "Nico Huerta",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "log4js": "^6.9.1",
+    "log4js-json-layout": "^2.2.3",
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^10.7.3",
+    "supertest": "^7.0.0"
+  }
+}

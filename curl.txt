@@ -1,0 +1,62 @@
+curl -X GET http://localhost:3000/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzI5MTc1Njc4fQ.gY4XrD6tcm_I44COdLIviQZBnvfr7gRajynmhtRfNpU" | jq
+curl -X POST http://localhost:3000/users/login -H "Content-Type: application/json" -d '{"email": "johndoe@example.com","password": "password"}'
+curl -X POST http://localhost:3000/users/register -H "Content-Type: application/json" -d '{"name": "NotNico", "email": "notnico@notnico.com","password": "password"}'
+curl -X POST http://localhost:3000/users/register -H "Content-Type: application/json" -d '{"name": "Nico", "email": "nico@nico.com","password": "password", "is_admin": true}'
+curl -X POST http://localhost:3000/users/login -H "Content-Type: application/json" -d '{"email": "nico@nico.com","password": "password"}'
+
+
+
+
++----+-----------+---------------------+--------------------------------------------------------------+-------+--------------+
+| id | name      | email               | password                                                     | role  | access_token |
++----+-----------+---------------------+--------------------------------------------------------------+-------+--------------+
+|  1 | John Doe  | johndoe@example.com | $2a$10$NKnIFqbJCOLxT9vDlSydk.zIHaoXCdOnGT3PL/mBkOAMfYHEgBknS | USER  | NULL         |
+|  3 | NotNico   | notnico@notnico.com | $2a$10$c7xWXOM5Eqwgp1wC8OMPXe6jvslFNB01K0Epzn3/iOYi3qAcWhLIC | USER  | NULL         |
+|  6 | Not       | not@notnico.com     | $2a$10$R8TB5GW.2bwh7hLk0u78yeC4dFkzxkwXglUM/TgTw.dD7cPBUYaMK | USER  | NULL         |
+|  7 | Nihjghjco | no@n.com            | $2a$10$kHWnaJex9wXC72xM623XDeZQ9/UBPz.U7yWVv9XL0sLzvT6.whsvS | ADMIN | NULL         |
+|  8 | Nico      | nico@nico.com       | $2a$10$cc4fABxCfuMEZ4Rgd5xze.rGMxR10sUsO9qfs67HyyYcQuTQ0ckY. | ADMIN | NULL         |
++----+-----------+---------------------+--------------------------------------------------------------+-------+--------------+
+
+
+{
+   "0":{
+      "id":1,
+      "name":"John Doe",
+      "email":"johndoe@example.com",
+      "password":"$2a$10$NKnIFqbJCOLxT9vDlSydk.zIHaoXCdOnGT3PL/mBkOAMfYHEgBknS",
+      "role":"USER",
+      "access_token":null
+   },
+   "1":{
+      "id":3,
+      "name":"NotNico",
+      "email":"notnico@notnico.com",
+      "password":"$2a$10$c7xWXOM5Eqwgp1wC8OMPXe6jvslFNB01K0Epzn3/iOYi3qAcWhLIC",
+      "role":"USER",
+      "access_token":null
+   },
+   "2":{
+      "id":6,
+      "name":"Not",
+      "email":"not@notnico.com",
+      "password":"$2a$10$R8TB5GW.2bwh7hLk0u78yeC4dFkzxkwXglUM/TgTw.dD7cPBUYaMK",
+      "role":"USER",
+      "access_token":null
+   },
+   "3":{
+      "id":7,
+      "name":"Nihjghjco",
+      "email":"no@n.com",
+      "password":"$2a$10$kHWnaJex9wXC72xM623XDeZQ9/UBPz.U7yWVv9XL0sLzvT6.whsvS",
+      "role":"ADMIN",
+      "access_token":null
+   },
+   "4":{
+      "id":8,
+      "name":"Nico",
+      "email":"nico@nico.com",
+      "password":"$2a$10$cc4fABxCfuMEZ4Rgd5xze.rGMxR10sUsO9qfs67HyyYcQuTQ0ckY.",
+      "role":"ADMIN",
+      "access_token":null
+   }
+}
