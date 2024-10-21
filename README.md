@@ -14,7 +14,7 @@ This is a RESTful API built using Node.js and MySQL, following the JSON:API spec
 - [Database Setup](#database-setup)
 - [Running the API](#running-the-api)
 - [Testing](#testing)
-- [API Endpoints](#api-endpoints)
+- [Tests](#tests)
 - [TODO](#todo)
 - [License](#license)
 
@@ -128,6 +128,39 @@ leovegas-nodejs-crud/
 
 The unit tests cover creating a new user, retrieving a user by ID, updating a user, and deleting a user.
 
+## Tests
+```
+> leovegas-nodejs-crud@1.0.0 test
+> mocha --exit
+
+{"startTime":"2024-10-21T08:07:49.019Z","categoryName":"default","level":"INFO","data":"Starting application"}
+{"startTime":"2024-10-21T08:07:49.024Z","categoryName":"default","level":"INFO","data":"Server is running on port 3000"}
+
+
+User API
+
+POST /users/register
+  ✔ should register a new user (79ms)
+  ✔ should return 400 for missing fields
+POST /users/login
+  ✔ should log in and return a token (53ms)
+  ✔ should return 401 for invalid credentials
+GET /users
+  ✔ should allow admin to get all users
+  ✔ should forbid non-admin users
+GET /users/:id
+  ✔ should get a user by ID
+  ✔ should return 403 if a user tries to get another users data
+PUT /users/:id
+  ✔ should update a user (self-update)
+  ✔ should forbid user updating another user
+DELETE /users/:id
+  ✔ should delete a user (admin)
+  ✔ should not allow admin to delete self
+
+
+12 passing (351ms)
+```
 ## TODO
 - Proper session token handling. Expiration time, persistence. If the app runs in a distributed manner, all instances must see the same session token; this is accomplished by storing the token in a shared database or a dedicated service. In the current state, if the app is killed, session tokens are lost since they are being stored in RAM. Users would need to re-login to obtain a new token in this scenario. Also, when running the app in multiple machines, the session token wouldn't be shared across valid sessions. A sticky session mechanism would be required in order to ensure that all requests are routed to the same instance, so that the same token is returned. This is not ideal and not production ready, but it is important to note the limitations of the system given the requirements and time constraints.
 - Validate for existing email in the database.
